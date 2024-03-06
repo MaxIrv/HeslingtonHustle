@@ -1,2 +1,3 @@
-# HeslingtonHustle
-University engineering 1 project
+# Heslington Hustle
+
+Eng1 University project.
