@@ -13,5 +13,6 @@ public class DesktopLauncher {
 		config.setWindowedMode(800, 480);
 		config.useVsync(true);
 		new Lwjgl3Application(new HesHustleGame(), config);
+
 	}
 }
