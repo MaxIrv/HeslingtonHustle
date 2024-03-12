@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/ENG1.HeslingtonHustle.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/ENG1.HeslingtonHustle.core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/ENG1.HeslingtonHustle.core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/ENG1.HeslingtonHustle.core.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/ENG1.HeslingtonHustle.core.test.iml" filepath="$PROJECT_DIR$/.idea/modules/core/ENG1.HeslingtonHustle.core.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/desktop/ENG1.HeslingtonHustle.desktop.iml" filepath="$PROJECT_DIR$/.idea/modules/desktop/ENG1.HeslingtonHustle.desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/desktop/ENG1.HeslingtonHustle.desktop.main.iml" filepath="$PROJECT_DIR$/.idea/modules/desktop/ENG1.HeslingtonHustle.desktop.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/desktop/ENG1.HeslingtonHustle.desktop.test.iml" filepath="$PROJECT_DIR$/.idea/modules/desktop/ENG1.HeslingtonHustle.desktop.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/HeslingtonHustle.iml" filepath="$PROJECT_DIR$/.idea/HeslingtonHustle.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/HeslingtonHustle.core.iml" filepath="$PROJECT_DIR$/.idea/modules/core/HeslingtonHustle.core.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/core/HeslingtonHustle.core.main.iml" filepath="$PROJECT_DIR$/.idea/modules/core/HeslingtonHustle.core.main.iml" />
