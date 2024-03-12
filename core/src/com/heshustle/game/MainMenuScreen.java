@@ -5,12 +5,12 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-public class MainMenu implements Screen {
+public class MainMenuScreen implements Screen {
   final HesHustleGame game;
 
   OrthographicCamera camera;
 
-  public MainMenu(final HesHustleGame game) {
+  public MainMenuScreen(final HesHustleGame game) {
     this.game = game;
 
     camera = new OrthographicCamera();
@@ -31,12 +31,14 @@ public class MainMenu implements Screen {
     game.batch.begin();
     game.font.draw(game.batch,"Heslington Hustle",100,150);
     game.font.draw(game.batch,"Press anything to start",100,100);
-    game.batch.end();
 
-    if (Gdx.input.isTouched()) { //Will need the next screen class to call here.
-      //game.setScreen(new GameScreen(game));
+
+    if (Gdx.input.isTouched()) { //Will need the next screen class to call here
+      game.setScreen(new MainGameScreen(game));
       dispose();
     }
+
+    game.batch.end();
   }
 
   @Override
