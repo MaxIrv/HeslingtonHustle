@@ -27,6 +27,7 @@ public class MainMenu implements Screen {
     ScreenUtils.clear(0,0,0,1);
     camera.update();
     game.batch.setProjectionMatrix(camera.combined);
+
     game.batch.begin();
     game.font.draw(game.batch,"Heslington Hustle",100,150);
     game.font.draw(game.batch,"Press anything to start",100,100);
