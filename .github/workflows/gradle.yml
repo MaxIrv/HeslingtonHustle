@@ -1,9 +1,9 @@
 name: Java CI with Gradle
 on:
   push:
-    branches: ["main", "cleanup-directory"]
+    branches: ["master"]
   pull_request:
-    branches: ["main"]
+    branches: ["master"]
 jobs:
   build:
     runs-on: ubuntu-22.04
