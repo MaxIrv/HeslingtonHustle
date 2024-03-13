@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="8" tileheight="8" infinite="0" nextlayerid="5" nextobjectid="1">
  <tileset firstgid="1" name="Grass" tilewidth="8" tileheight="8" tilecount="308" columns="22">
-  <image source="Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Grass.png" width="176" height="112"/>
+  <image source="tileset/Grass.png" width="176" height="112"/>
  </tileset>
- <tileset firstgid="309" source="Water.tsx"/>
+ <tileset firstgid="309" source="tileset/Water.tsx"/>
  <tileset firstgid="325" name="Tilled_Dirt" tilewidth="8" tileheight="8" tilecount="308" columns="22">
-  <image source="Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Tilled_Dirt.png" width="176" height="112"/>
+  <image source="tileset/Tilled_Dirt.png" width="176" height="112"/>
  </tileset>
  <tileset firstgid="633" name="Wooden House" tilewidth="8" tileheight="8" tilecount="140" columns="14">
-  <image source="Sprout Lands - Sprites - Basic pack/Sprout Lands - Sprites - Basic pack/Tilesets/Wooden House.png" width="112" height="80"/>
+  <image source="tileset/Wooden House.png" width="112" height="80"/>
  </tileset>
  <layer id="2" name="The sea" width="30" height="20">
   <data encoding="csv">
