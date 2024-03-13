@@ -1,0 +1,21 @@
+@startuml
+@startgantt
+[Elicit requirements] requires 9 days and is colored in LightBlue
+[Method selection] requires 9 days and is colored in LightGreen
+[Evaluate risks] requires 20 days and is colored in LightPink
+[Plan Architecture] starts D+6
+[Plan Architecture] ends  D+13
+[Create Game & Menu screens] starts D+12
+[Create Game & Menu screens] ends D+15
+[Create Map] starts D+12
+[Create Map] ends D+15
+[Create basic avatar] starts D+13
+[Create basic avatar] ends D+17
+[Avatar moving around map] starts D+17
+[Avatar moving around map] ends D+20
+[Avatar can complete events] starts D+20
+[Avatar can complete events] ends D+25
+[Nice to have features e.g sound] starts D+25
+[Nice to have features e.g sound] ends D+30
+@endgantt
+@enduml
