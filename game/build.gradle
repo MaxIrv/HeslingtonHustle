@@ -57,6 +57,8 @@ project(":desktop") {
 project(":core") {
     apply plugin: "java-library"
 
+    apply plugin: 'jacoco' // Apply JaCoCo plugin here
+
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
