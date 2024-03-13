@@ -57,6 +57,8 @@ project(":desktop") {
 project(":core") {
     apply plugin: "java-library"
 
+    apply plugin: 'jacoco' // Apply JaCoCo plugin here
+
 
     dependencies {
         api "com.badlogicgames.gdx:gdx:$gdxVersion"
@@ -66,5 +68,10 @@ project(":core") {
         api "com.badlogicgames.box2dlights:box2dlights:$box2DLightsVersion"
         api "com.badlogicgames.ashley:ashley:$ashleyVersion"
         
+    }
+
+    test {
+        useJUnitPlatform()
+        jvmArgs '--add-opens', 'java.base/java.lang=ALL-UNNAMED'
     }
 }
