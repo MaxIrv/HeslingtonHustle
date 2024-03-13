@@ -92,7 +92,7 @@ nb-configuration.xml
 ## Gradle
 
 /local.properties
-.gradle/
+/game/.gradle/
 gradle-app.setting
 /game/build/
 /game/android/build/
@@ -112,5 +112,5 @@ Thumbs.db
 /ios/xcode/native/
 /ios/IOSLauncher.app
 /ios/IOSLauncher.app.dSYM
-game/core/build/libs/core-1.0.jar
-game/desktop/build/libs/desktop-1.0.jar
+/game/core/build/libs/core-1.0.jar
+/game/desktop/build/libs/desktop-1.0.jar
