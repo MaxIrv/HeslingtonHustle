@@ -69,9 +69,4 @@ project(":core") {
         api "com.badlogicgames.ashley:ashley:$ashleyVersion"
         
     }
-
-    test {
-        useJUnitPlatform()
-        jvmArgs '--add-opens', 'java.base/java.lang=ALL-UNNAMED'
-    }
 }
