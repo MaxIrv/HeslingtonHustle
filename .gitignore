@@ -94,12 +94,12 @@ nb-configuration.xml
 /local.properties
 .gradle/
 gradle-app.setting
-/build/
-/android/build/
-/core/build/
-/desktop/build/
-/html/build/
-/ios/build/
+/game/build/
+/game/android/build/
+/game/core/build/
+/game/desktop/build/
+/game/html/build/
+/game/ios/build/
 
 ## OS Specific
 .DS_Store
@@ -112,3 +112,5 @@ Thumbs.db
 /ios/xcode/native/
 /ios/IOSLauncher.app
 /ios/IOSLauncher.app.dSYM
+game/core/build/libs/core-1.0.jar
+game/desktop/build/libs/desktop-1.0.jar
