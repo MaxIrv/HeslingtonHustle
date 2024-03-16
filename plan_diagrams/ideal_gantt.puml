@@ -1,32 +1,44 @@
 @startuml
 @startgantt
-project starts the 11th Feburary 2024
-[Elicit requirements] requires 14 days and is colored in LightBlue
-[Method selection] requires 9 days and is colored in LightGreen
-[Evaluate risks] requires 40 days and is colored in LightPink
-[Plan Architecture] starts D+6
-[Plan Architecture] ends  D+15
+project starts the 14th February 2024
+[Team Organisation] starts 2024-02-14
+[Team Organisation] ends 2024-02-21
+[Team Organisation] is colored in Green
+[Method selection] starts 2024-02-14
+[Method selection] ends 2024-02-21
+[Method selection] is colored in LightGreen
+[Requirements Gathering] starts 2024-02-14
+[Requirements Gathering] ends 2024-02-28
+[Requirements Gathering] is colored in LightBlue
+[Evaluate risks] starts 2024-02-14
+[Evaluate risks] ends 2024-03-21
+[Evaluate risks] is colored in LightPink
+[Plan Architecture] starts 2024-02-21
+[Plan Architecture] ends  2024-02-28
 [Plan Architecture] is colored in Khaki
-[Refine Architecture] starts D+14
-[Refine Architecture] ends D+20
+[Refine Architecture] starts 2024-02-28
+[Refine Architecture] ends 2024-03-21
 [Refine Architecture] is colored in Khaki
-[Create Game & Menu screens] starts D+12
-[Create Game & Menu screens] ends D+15
+[Create Game & Menu screens] starts 2024-02-28
+[Create Game & Menu screens] ends 2024-03-02
 [Create Game & Menu screens] is colored in Purple
-[Create Map] starts D+12
-[Create Map] ends D+15
-[Create Map] is colored in Indigo
-[Create basic avatar] starts D+13
-[Create basic avatar] ends D+17
+[Create Map] starts 2024-02-28
+[Create Map] ends 2024-03-02
+[Create Map] is colored in Salmon
+[Create basic avatar] starts 2024-03-03
+[Create basic avatar] ends 2024-03-05
 [Create basic avatar] is colored in Orchid
-[Avatar moving around map] starts D+17
-[Avatar moving around map] ends D+20
+[Avatar moving around map] starts 2024-03-05
+[Avatar moving around map] ends 2024-03-09
 [Avatar moving around map] is colored in MediumOrchid
-[Avatar can complete events] starts D+20
-[Avatar can complete events] ends D+25
-[Avatar can complete events] is colored in MediumSlateBlue
-[Nice to have features e.g sound] starts D+29
-[Nice to have features e.g sound] ends D+39
-[Nice to have features e.g sound] is colored in Thistle
+[Avatar completing events] starts 2024-03-08
+[Avatar completing events] ends 2024-03-13
+[Avatar completing events] is colored in MediumSlateBlue
+[Nice to have features] starts 2024-03-13
+[Nice to have features] ends 2024-03-21
+[Nice to have features] is colored in Lavender
+[Slack for overruns] starts 2024-03-13
+[Slack for overruns] ends 2024-03-21
+[Slack for overruns] is colored in Tomato
 @endgantt
 @enduml
