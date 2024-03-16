@@ -1,8 +1,9 @@
 @startuml
 @startgantt
-[Elicit requirements] requires 9 days and is colored in LightBlue
+project starts the 11th Feburary 2024
+[Elicit requirements] requires 14 days and is colored in LightBlue
 [Method selection] requires 9 days and is colored in LightGreen
-[Evaluate risks] requires 31 days and is colored in LightPink
+[Evaluate risks] requires 40 days and is colored in LightPink
 [Plan Architecture] starts D+6
 [Plan Architecture] ends  D+15
 [Plan Architecture] is colored in Khaki
@@ -24,8 +25,8 @@
 [Avatar can complete events] starts D+20
 [Avatar can complete events] ends D+25
 [Avatar can complete events] is colored in MediumSlateBlue
-[Nice to have features e.g sound] starts D+25
-[Nice to have features e.g sound] ends D+30
-[Nice to have features e.g sound] is colored in Indigo
+[Nice to have features e.g sound] starts D+29
+[Nice to have features e.g sound] ends D+39
+[Nice to have features e.g sound] is colored in Thistle
 @endgantt
 @enduml
