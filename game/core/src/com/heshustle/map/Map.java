@@ -1,6 +1,6 @@
 package com.heshustle.game.map;
 
-import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
@@ -9,6 +9,7 @@ import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.heshustle.game.map.Layer;
+import com.badlogic.gdx.Gdx;
 
 /**
  *<p>Class that deals with:</p>
@@ -19,7 +20,7 @@ import com.heshustle.game.map.Layer;
  * </ul>
  */
 public class Map {
-  private Camera camera;
+  private OrthographicCamera camera;
   private final TiledMap map;
   private final MapRenderer mapRenderer;
 
@@ -32,7 +33,7 @@ public class Map {
    * @param camera Camera that the map's being rendered to.
    * @param filePath String that's the relative path (within assets) to the .tmx file.
    */
-  public Map(Camera camera, String filePath){
+  public Map(OrthographicCamera camera, String filePath){
     this.camera = camera;
     map = new TmxMapLoader().load(filePath);
     mapRenderer = new OrthoCachedTiledMapRenderer(map);
@@ -41,7 +42,7 @@ public class Map {
     background = (TiledMapTileLayer) map.getLayers().get("background");
 
     collidablePolygons = map.getLayers().get("collide");
-    collidablePolygons = map.getLayers().get("trigger");
+    triggers = map.getLayers().get("trigger");
   }
 
   /**
@@ -50,8 +51,9 @@ public class Map {
    * @param layer Layer that gets rendered, either foreground or background.
    * @throws IllegalArgumentException Thrown when layer is not a valid layer.
    */
-  public void render(Layer layer) throws IllegalArgumentException{
+  public void render(Layer layer) throws IllegalArgumentException {
     String layerString;
+    int layerIndex;
 
     switch (layer){
       case foreground:
@@ -66,10 +68,22 @@ public class Map {
         throw new IllegalArgumentException("Layer must be either foreground or background");
     }
 
-    int[] renderLayers = { 0 };
+    // Check if the layer exists
+    layerIndex = map.getLayers().getIndex(layerString);
+    if (layerIndex == -1) {
+      throw new IllegalArgumentException("Layer " + layerString + " not found in the map.");
+    }
 
-    renderLayers[0] = map.getLayers().getIndex(layerString);
 
+    int[] renderLayers = { layerIndex };
+    mapRenderer.setView(camera);
     mapRenderer.render(renderLayers);
+
+
+  }
+
+  public void updateCamera(OrthographicCamera camera) {
+    this.camera = camera;
+    mapRenderer.setView(camera);
   }
 }
