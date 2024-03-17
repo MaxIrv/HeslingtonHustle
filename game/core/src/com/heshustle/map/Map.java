@@ -22,7 +22,7 @@ import com.badlogic.gdx.Gdx;
 public class Map {
   private OrthographicCamera camera;
   private final TiledMap map;
-  private final MapRenderer mapRenderer;
+  private final OrthoCachedTiledMapRenderer mapRenderer;
 
   private TiledMapTileLayer foreground, background;
   private MapLayer collidablePolygons, triggers;
@@ -36,7 +36,8 @@ public class Map {
   public Map(OrthographicCamera camera, String filePath){
     this.camera = camera;
     map = new TmxMapLoader().load(filePath);
-    mapRenderer = new OrthoCachedTiledMapRenderer(map);
+    mapRenderer = new OrthoCachedTiledMapRenderer (map);
+    mapRenderer.setBlending(true);
 
     foreground = (TiledMapTileLayer) map.getLayers().get("foreground");
     background = (TiledMapTileLayer) map.getLayers().get("background");
