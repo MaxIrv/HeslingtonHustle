@@ -2,8 +2,10 @@
 @startwbs
 * ENG1 Assessment One
 **[#SkyBlue] Requirements Gathering
-*** User Requirements
-*** Functional Requirements
+*** Textual Introduction
+*** Requirements List
+**** User Requirements
+**** Functional Requirements
 **[#Yellow] Method Selection & Planning
 *** Outline of Methods and Tools Used
 *** Outline of Team Organisation Method
@@ -24,5 +26,7 @@
 *** Player Movement
 *** Game Logic
 *** Documentation
+*** List Used Assets, Discuss Suitability of Licences
+*** List Features Not (Fully) Complete (Link to requirements)
 @endwbs
 @enduml
