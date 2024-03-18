@@ -14,30 +14,30 @@ project starts the 14th February 2024
 [Evaluate risks] ends 2024-03-21
 [Evaluate risks] is colored in LightPink
 [Plan Architecture] starts 2024-02-21
-[Plan Architecture] ends  2024-03-06
+[Plan Architecture] ends  2024-03-13
 [Plan Architecture] is colored in Khaki
-[Refine Architecture] starts 2024-02-28
+[Refine Architecture] starts 2024-03-06
 [Refine Architecture] ends 2024-03-21
 [Refine Architecture] is colored in Khaki
 [Create Game & Menu screens] starts 2024-02-28
 [Create Game & Menu screens] ends 2024-03-02
 [Create Game & Menu screens] is colored in Purple
 [Create Map] starts 2024-02-28
-[Create Map] ends 2024-03-02
+[Create Map] ends 2024-03-07
 [Create Map] is colored in Salmon
 [Create basic avatar] starts 2024-03-03
-[Create basic avatar] ends 2024-03-05
+[Create basic avatar] ends 2024-03-07
 [Create basic avatar] is colored in Orchid
-[Avatar moving around map] starts 2024-03-05
+[Avatar moving around map] starts 2024-03-07
 [Avatar moving around map] ends 2024-03-09
 [Avatar moving around map] is colored in MediumOrchid
-[Avatar completing events] starts 2024-03-08
+[Avatar completing events] starts 2024-03-10
 [Avatar completing events] ends 2024-03-13
 [Avatar completing events] is colored in MediumSlateBlue
-[Nice to have features] starts 2024-03-13
+[Nice to have features] starts 2024-03-14
 [Nice to have features] ends 2024-03-21
 [Nice to have features] is colored in Lavender
-[Slack for overruns] starts 2024-03-13
+[Slack for overruns] starts 2024-03-14
 [Slack for overruns] ends 2024-03-21
 [Slack for overruns] is colored in Tomato
 @endgantt
