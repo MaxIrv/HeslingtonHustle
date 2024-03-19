@@ -6,23 +6,23 @@
 hs_err_pid*
 
 ## Robovm
-/ios/robovm-build/
+/game/ios/robovm-build/
 
 ## GWT
-/html/war/
-/html/gwt-unitCache/
-.apt_generated/
-.gwt/
-gwt-unitCache/
-www-test/
-.gwt-tmp/
+/game/html/war/
+/game/html/gwt-unitCache/
+game/.apt_generated/
+game/.gwt/
+game/gwt-unitCache/
+game/www-test/
+game/.gwt-tmp/
 
 ## Android Studio and Intellij and Android in general
-/android/libs/armeabi-v7a/
-/android/libs/arm64-v8a/
-/android/libs/x86/
-/android/libs/x86_64/
-/android/gen/
+/game/android/libs/armeabi-v7a/
+/game/android/libs/arm64-v8a/
+/game/android/libs/x86/
+/game/android/libs/x86_64/
+/game/android/gen/
 .idea/
 *.ipr
 *.iws
@@ -35,11 +35,11 @@ com_crashlytics_export_strings.xml
 .classpath
 .project
 .metadata/
-/android/bin/
-/core/bin/
-/desktop/bin/
-/html/bin/
-/ios/bin/
+/game/android/bin/
+/game/core/bin/
+/game/desktop/bin/
+/game/html/bin/
+/game/ios/bin/
 *.tmp
 *.bak
 *.swp
@@ -58,48 +58,42 @@ com_crashlytics_export_strings.xml
 /html/nbproject/private/
 /ios/nbproject/private/
 
-/build/
-/android/build/
-/core/build/
-/desktop/build/
-/html/build/
-/ios/build/
-
-/nbbuild/
-/android/nbbuild/
-/core/nbbuild/
-/desktop/nbbuild/
-/html/nbbuild/
-/ios/nbbuild/
-
-/dist/
-/android/dist/
-/core/dist/
-/desktop/dist/
-/html/dist/
-/ios/dist/
-
-/nbdist/
-/android/nbdist/
-/core/nbdist/
-/desktop/nbdist/
-/html/nbdist/
-/ios/nbdist/
-
-nbactions.xml
-nb-configuration.xml
-
-## Gradle
-
-/local.properties
-/game/.gradle/
-gradle-app.setting
 /game/build/
 /game/android/build/
 /game/core/build/
 /game/desktop/build/
 /game/html/build/
 /game/ios/build/
+
+/game/nbbuild/
+/game/android/nbbuild/
+/game/core/nbbuild/
+/game/desktop/nbbuild/
+/game/html/nbbuild/
+/game/ios/nbbuild/
+
+/game/dist/
+/game/android/dist/
+/game/core/dist/
+/game/desktop/dist/
+/game/html/dist/
+/game/ios/dist/
+
+/game/nbdist/
+/game/android/nbdist/
+/game/core/nbdist/
+/game/desktop/nbdist/
+/game/html/nbdist/
+/game/ios/nbdist/
+
+game/nbactions.xml
+game/nb-configuration.xml
+
+## Gradle
+
+/game/local.properties
+/game/.gradle/
+/game/gradle-app.setting
 
 ## OS Specific
 .DS_Store
