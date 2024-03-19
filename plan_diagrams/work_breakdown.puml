@@ -1,0 +1,32 @@
+@startuml
+@startwbs
+* ENG1 Assessment One
+**[#SkyBlue] Requirements Gathering
+*** Textual Introduction
+*** Requirements List
+**** User Requirements
+**** Functional Requirements
+**[#Yellow] Method Selection & Planning
+*** Outline of Methods and Tools Used
+*** Outline of Team Organisation Method
+*** Systemic Plan
+**** Gantt Chart
+**** Textual Explanation
+**[#Pink] Architecture
+*** UML diagram of class structure
+*** Explain How and Why Architecture Developed
+*** Demonstrate Link Between Requirements and Architecture
+*** Demonstrate How Design Changed Over Time
+**[#CornflowerBlue] Risk Planning and Mitigation
+*** Risk Register
+*** Explanation of How Risks Were Managed
+**[#LightGreen] Implementation
+*** Map
+*** Main Menu
+*** Player Movement
+*** Game Logic
+*** Documentation
+*** List Used Assets, Discuss Suitability of Licences
+*** List Features Not (Fully) Complete (Link to requirements)
+@endwbs
+@enduml
