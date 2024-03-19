@@ -9,11 +9,16 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.heshustle.game.map.Map;
+import com.heshustle.game.map.Layer;
+
 
 public class MainGameScreen implements Screen {
   public static final float SPEED = 120;
   private SpriteBatch batch;
   final HesHustleGame game;
+
+  private Map gameMap;
 
   private GameCharacter character;
 
@@ -22,16 +27,36 @@ public class MainGameScreen implements Screen {
 
   public MainGameScreen (final HesHustleGame game, GameCharacter character) {
     this.game = game;
+
+    // Initialize the game map using Gdx.files.internal passing in the path as a string
+    gameMap = new Map(new OrthographicCamera(), Gdx.files.internal("HeslingtonEast.tmx").file().getAbsolutePath());
     this.character = character;
+    
   }
 
   @Override
   public void show() {
+    img = new Texture(Gdx.files.internal("badlogic.jpg"));
   }
 
   @Override
-  public void render(float v) {
+  public void render(float delta) {
+    int mapWidth = 30;
+    int mapHeight = 20;
+    int tileSize = 8;
+
     ScreenUtils.clear(0, 0, 0.2f, 1);
+
+    game.camera.setToOrtho(false, mapWidth * tileSize, mapHeight * tileSize);
+    game.camera.update(); // Ensure the camera is updated
+
+    // Set the mapRenderer view before rendering the map
+    gameMap.updateCamera(game.camera);
+
+    Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // Clear the screen
+
+
+    // Render the map layers
 
     // Uses getDeltaTime to ensure FPS changes does not affect speed
     // Otherwise more FPS would equal more speed
@@ -59,6 +84,8 @@ public class MainGameScreen implements Screen {
     Gdx.gl.glClearColor(1, 0, 0, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     game.batch.begin();
+    gameMap.render(Layer.background); // Render the background layer
+    gameMap.render(Layer.foreground); // Render the foreground layer
 
     character.update(Gdx.graphics.getDeltaTime());
     character.render(game.batch, characterX, characterY);
@@ -72,7 +99,13 @@ public class MainGameScreen implements Screen {
     }
 
     game.batch.end();
+  }
 
+  private void handleInput(float delta) {
+    if (Gdx.input.isKeyPressed(Keys.UP)) y += SPEED * delta;
+    if (Gdx.input.isKeyPressed(Keys.DOWN)) y -= SPEED * delta;
+    if (Gdx.input.isKeyPressed(Keys.LEFT)) x -= SPEED * delta;
+    if (Gdx.input.isKeyPressed(Keys.RIGHT)) x += SPEED * delta;
   }
 
   @Override
@@ -97,6 +130,7 @@ public class MainGameScreen implements Screen {
 
   @Override
   public void dispose() {
-
+    img.dispose();
+//    gameMap.dispose();
   }
 }
