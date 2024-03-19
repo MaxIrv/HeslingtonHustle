@@ -1,4 +1,4 @@
-package com.heshustle.game;
+package core.src.com.heshustle.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -13,56 +13,63 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class MainGameScreen implements Screen {
   public static final float SPEED = 120;
   private SpriteBatch batch;
-  private Texture img;
   final HesHustleGame game;
 
-  float x;
-  float y;
+  private GameCharacter character;
 
-//  OrthographicCamera camera;
+  float characterX;
+  float characterY;
 
-  public MainGameScreen (final HesHustleGame game) {
+  public MainGameScreen (final HesHustleGame game, GameCharacter character) {
     this.game = game;
-
-    // load images
-//    img = new Texture(Gdx.files.internal("badlogic.jpg"));
-
-    // load sound effects
-    // effect = Gdx.audio.newSound(Gdx.files.internal("example.wav");
-
-//    camera = new OrthographicCamera();
-//    camera.setToOrtho(false, 800, 400);
+    this.character = character;
   }
 
   @Override
   public void show() {
-    img = new Texture(Gdx.files.internal("badlogic.jpg"));
   }
 
   @Override
   public void render(float v) {
     ScreenUtils.clear(0, 0, 0.2f, 1);
 
-    // Uses getDeltaTime to ensure FPS changes do not affect speed
+    // Uses getDeltaTime to ensure FPS changes does not affect speed
     // Otherwise more FPS would equal more speed
     if (Gdx.input.isKeyPressed(Keys.UP)) {
-      y += SPEED * Gdx.graphics.getDeltaTime();
+      characterY += SPEED * Gdx.graphics.getDeltaTime();
+      character.setState(GameCharacter.State.RUNNING, GameCharacter.Direction.UP);
+    } else if (Gdx.input.isKeyPressed(Keys.DOWN)) {
+      characterY -= SPEED * Gdx.graphics.getDeltaTime();
+      character.setState(GameCharacter.State.RUNNING, GameCharacter.Direction.DOWN);
+    } else if (Gdx.input.isKeyPressed(Keys.LEFT)) {
+      characterX -= SPEED * Gdx.graphics.getDeltaTime();
+      character.setState(GameCharacter.State.RUNNING, GameCharacter.Direction.LEFT);
+    } else if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
+      characterX += SPEED * Gdx.graphics.getDeltaTime();
+      character.setState(GameCharacter.State.RUNNING, GameCharacter.Direction.RIGHT);
     }
-    if (Gdx.input.isKeyPressed(Keys.DOWN)) {
-      y -= SPEED * Gdx.graphics.getDeltaTime();
-    }
-    if (Gdx.input.isKeyPressed(Keys.LEFT)) {
-      x -= SPEED * Gdx.graphics.getDeltaTime();
-    }
-    if (Gdx.input.isKeyPressed(Keys.RIGHT)) {
-      x += SPEED * Gdx.graphics.getDeltaTime();
+    // If no keys are being pressed
+    if (!Gdx.input.isKeyPressed(Keys.LEFT) &&
+        !Gdx.input.isKeyPressed(Keys.RIGHT) &&
+        !Gdx.input.isKeyPressed(Keys.UP) &&
+        !Gdx.input.isKeyPressed(Keys.DOWN)) {
+      character.setState(GameCharacter.State.IDLE, character.getCurrentDirection());
     }
 
     Gdx.gl.glClearColor(1, 0, 0, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     game.batch.begin();
 
-    game.batch.draw(img, x, y);
+    character.update(Gdx.graphics.getDeltaTime());
+    character.render(game.batch, characterX, characterY);
+
+    if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+      // Option 1: Go back to the main menu or another screen
+      game.setScreen(new MainMenuScreen(game));
+
+      // Option 2: Exit the application
+      // Gdx.app.exit();
+    }
 
     game.batch.end();
 

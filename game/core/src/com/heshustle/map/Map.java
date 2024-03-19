@@ -1,4 +1,4 @@
-package com.heshustle.game.map;
+package game.core.src.com.heshustle.map;
 
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.maps.MapRenderer;
