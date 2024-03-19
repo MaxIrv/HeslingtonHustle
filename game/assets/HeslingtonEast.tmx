@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="1">
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="8" tileheight="8" infinite="0" nextlayerid="6" nextobjectid="11">
  <tileset firstgid="1" name="Grass" tilewidth="8" tileheight="8" tilecount="308" columns="22">
   <image source="Tilesets/Grass.png" width="176" height="112"/>
  </tileset>
