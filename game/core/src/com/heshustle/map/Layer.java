@@ -1,5 +1,5 @@
-package com.heshustle.game.map;
+package com.heshustle.map;
 
 public enum Layer {
-  foreground, background, collision, triggers
+  foreground, background, waterLayer, collision, triggers
 }
