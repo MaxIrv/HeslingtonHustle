@@ -1,4 +1,4 @@
-package com.heshustle.game.map;
+package com.heshustle.map;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapRenderer;
@@ -8,7 +8,7 @@ import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.heshustle.game.map.Layer;
+import com.heshustle.map.Layer;
 import com.badlogic.gdx.Gdx;
 
 /**
@@ -24,7 +24,7 @@ public class Map {
   private final TiledMap map;
   private final OrthoCachedTiledMapRenderer mapRenderer;
 
-  private TiledMapTileLayer foreground, background;
+  private TiledMapTileLayer foreground, background, waterLayer;
   private MapLayer collidablePolygons, triggers;
 
   /**
@@ -41,6 +41,7 @@ public class Map {
 
     foreground = (TiledMapTileLayer) map.getLayers().get("foreground");
     background = (TiledMapTileLayer) map.getLayers().get("background");
+    waterLayer = (TiledMapTileLayer) map.getLayers().get("waterLayer");
 
     collidablePolygons = map.getLayers().get("collide");
     triggers = map.getLayers().get("trigger");
@@ -63,6 +64,10 @@ public class Map {
 
       case background:
         layerString = "background";
+        break;
+
+      case waterLayer:
+        layerString = "waterLayer";
         break;
 
       default:

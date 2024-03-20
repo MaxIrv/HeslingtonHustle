@@ -1,4 +1,4 @@
-package com.heshustle.game;
+package core.src.com.heshustle.game;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
