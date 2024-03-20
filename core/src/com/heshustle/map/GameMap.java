@@ -12,6 +12,8 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+import com.heshustle.interaction.Interaction;
+import com.heshustle.interaction.Interaction.Type;
 
 /**
  *<p>Class that deals with:</p>
@@ -21,7 +23,7 @@ import com.badlogic.gdx.utils.Array;
  * <li>Checking for collision with both triggers and collidable objects.</li>
  * </ul>
  */
-public class Map {
+public class GameMap {
   private OrthographicCamera camera;
   private final TiledMap map;
   private final OrthoCachedTiledMapRenderer mapRenderer;
@@ -36,6 +38,7 @@ public class Map {
   public final Array<Rectangle> collidableTiles = new Array<>();
   public final Array<Rectangle> waterTiles = new Array<>();
   public final Array<Rectangle> collidableWaterTiles = new Array<>();
+  public final Array<Interaction> interactions = new Array<>();
 
   /**
    * <p>Constructor for Map.</p>
@@ -43,7 +46,7 @@ public class Map {
    * @param camera Camera that the map's being rendered to.
    * @param filePath String that's the relative path (within assets) to the .tmx file.
    */
-  public Map(OrthographicCamera camera, String filePath){
+  public GameMap(OrthographicCamera camera, String filePath) throws ClassNotFoundException {
     this.camera = camera;
     map = new TmxMapLoader().load(filePath);
     mapRenderer = new OrthoCachedTiledMapRenderer (map);
@@ -74,7 +77,33 @@ public class Map {
             startPosition.x = rectObject.getRectangle().x;
             startPosition.y = rectObject.getRectangle().y;
           }
-          break;
+        } else if (object instanceof RectangleMapObject) {
+          RectangleMapObject rectObject = (RectangleMapObject) object;
+          Rectangle rect = rectObject.getRectangle();
+          String objectiveType = (String) object.getProperties().get("objectiveType");
+          Interaction.Type newType;
+          switch (objectiveType) {
+            case "Study":
+              newType = Type.STUDY;
+              break;
+            case "Sleep":
+              newType = Type.SLEEP;
+              break;
+            case "Hunger":
+              newType = Type.EAT;
+              break;
+            case "Recreation":
+              newType = Type.RECREATION;
+              break;
+            default:
+              throw new ClassNotFoundException("Invalid objectiveType found in object");
+          }
+
+          String name = object.getName();
+          int timeLength = object.getProperties().get("timeLength", Integer.class);
+
+          Interaction newInteraction = new Interaction(rectObject, newType, name, timeLength);
+          interactions.add(newInteraction);
         }
       }
     }

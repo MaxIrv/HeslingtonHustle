@@ -3,29 +3,42 @@ package com.heshustle.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
+import com.heshustle.interaction.Interaction;
+import com.heshustle.map.GameMap;
 import com.heshustle.map.Layer;
-import com.heshustle.map.Map;
 
 
 public class MainGameScreen implements Screen {
+  private BitmapFont font;
+  private float fontScale = 0.3f;
   public static final float SPEED = 20;
   final HesHustleGame game;
-  private final Map gameMap;
+  private final GameMap gameMap;
   private final GameCharacter character;
 
   // Character Position
   private float characterX, characterY;
 
-  public MainGameScreen (final HesHustleGame game, GameCharacter character) {
+  public MainGameScreen (final HesHustleGame game, GameCharacter character)
+      throws ClassNotFoundException {
     this.game = game;
-
+    this.font = new BitmapFont();
+    this.font.getData().setScale(fontScale);
+    this.font.setColor(Color.BLACK);
     // Initialize the game map using Gdx.files.internal passing in the path as a string
-    gameMap = new Map(new OrthographicCamera(), Gdx.files.internal("HeslingtonEast.tmx").file().getAbsolutePath());
+    try {
+      gameMap = new GameMap(new OrthographicCamera(),
+          Gdx.files.internal("HeslingtonEast.tmx").file().getAbsolutePath());
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException("Failed to load game map");
+    }
     this.character = character;
     this.characterX = gameMap.startPosition.x;
     this.characterY = gameMap.startPosition.y;
@@ -87,6 +100,32 @@ public class MainGameScreen implements Screen {
     character.update(Gdx.graphics.getDeltaTime());
     character.render(game.batch, characterX, characterY, 10);
 
+    // Create a rectangle representing the player's new position
+    Rectangle characterRect = new Rectangle(characterX, characterY, character.characterWidth, character.characterHeight);
+
+    // Handle interactions proximity
+    Interaction nearbyInteraction = null;
+    float interactionRange = 100.0f; // Set this to the distance within which you can interact
+
+    for (Interaction interaction : gameMap.interactions) {
+      if (characterRect.overlaps(interaction.getBounds())) {
+        nearbyInteraction = interaction;
+        break; // Assume only one interaction at a time
+      }
+    }
+
+    // In your render method
+    if (nearbyInteraction != null) {
+      font.draw(game.batch, "Press E to interact with " + nearbyInteraction.getName(), characterX, characterY + 20); // Adjust the coordinates as necessary
+    }
+
+    // In your update method or input handler
+    if (Gdx.input.isKeyJustPressed(Keys.E) && nearbyInteraction != null) {
+      // Call the interaction logic
+      performInteraction(nearbyInteraction);
+    }
+
+
     if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
       // Option 1: Go back to the main menu or another screen
       game.setScreen(new MainMenuScreen(game));
@@ -98,9 +137,15 @@ public class MainGameScreen implements Screen {
     game.batch.end();
   }
 
+  public void performInteraction(Interaction nearbyInteraction) {
+
+  }
+
   public void updatePlayerPosition(float deltaX, float deltaY) {
     float newX = characterX + deltaX;
     float newY = characterY + deltaY;
+
+
 
     // Create a rectangle representing the player's new position
     Rectangle newCharacterRect = new Rectangle(newX, newY, character.characterWidth, character.characterHeight);

@@ -1,0 +1,18 @@
+{
+  "College Dorm": {
+    "type": "SLEEP",
+    "duration": 8
+  },
+  "Glasshouse": {
+    "type": "RECREATION",
+    "duration": 2
+  },
+  "CompSci": {
+    "type": "STUDY",
+    "duration": 4
+  },
+  "Piazza": {
+    "type": "EAT",
+    "duration": 1
+  }
+}

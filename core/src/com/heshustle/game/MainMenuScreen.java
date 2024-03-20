@@ -67,7 +67,11 @@ public class MainMenuScreen implements Screen {
 
     if (Gdx.input.isKeyPressed(Keys.ENTER ) ||
       Gdx.input.isKeyPressed(Keys.SPACE)) {
-      game.setScreen(new MainGameScreen(game, characters.get(selectedCharacterIndex)));
+      try {
+        game.setScreen(new MainGameScreen(game, characters.get(selectedCharacterIndex)));
+      } catch (ClassNotFoundException e) {
+        throw new RuntimeException(e);
+      }
       dispose();
     }
     // Handle character selection
