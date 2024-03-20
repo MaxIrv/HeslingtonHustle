@@ -6,23 +6,23 @@
 hs_err_pid*
 
 ## Robovm
-/game/ios/robovm-build/
+/ios/robovm-build/
 
 ## GWT
-/game/html/war/
-/game/html/gwt-unitCache/
-game/.apt_generated/
-game/.gwt/
-game/gwt-unitCache/
-game/www-test/
-game/.gwt-tmp/
+/html/war/
+/html/gwt-unitCache/
+.apt_generated/
+.gwt/
+gwt-unitCache/
+www-test/
+.gwt-tmp/
 
 ## Android Studio and Intellij and Android in general
-/game/android/libs/armeabi-v7a/
-/game/android/libs/arm64-v8a/
-/game/android/libs/x86/
-/game/android/libs/x86_64/
-/game/android/gen/
+/android/libs/armeabi-v7a/
+/android/libs/arm64-v8a/
+/android/libs/x86/
+/android/libs/x86_64/
+/android/gen/
 .idea/
 *.ipr
 *.iws
@@ -35,11 +35,11 @@ com_crashlytics_export_strings.xml
 .classpath
 .project
 .metadata/
-/game/android/bin/
-/game/core/bin/
-/game/desktop/bin/
-/game/html/bin/
-/game/ios/bin/
+/android/bin/
+/core/bin/
+/desktop/bin/
+/html/bin/
+/ios/bin/
 *.tmp
 *.bak
 *.swp
@@ -58,42 +58,42 @@ com_crashlytics_export_strings.xml
 /html/nbproject/private/
 /ios/nbproject/private/
 
-/game/build/
-/game/android/build/
-/game/core/build/
-/game/desktop/build/
-/game/html/build/
-/game/ios/build/
+/build/
+/android/build/
+/core/build/
+/desktop/build/
+/html/build/
+/ios/build/
 
-/game/nbbuild/
-/game/android/nbbuild/
-/game/core/nbbuild/
-/game/desktop/nbbuild/
-/game/html/nbbuild/
-/game/ios/nbbuild/
+/nbbuild/
+/android/nbbuild/
+/core/nbbuild/
+/nbbuild/
+/html/nbbuild/
+/ios/nbbuild/
 
-/game/dist/
-/game/android/dist/
-/game/core/dist/
-/game/desktop/dist/
-/game/html/dist/
-/game/ios/dist/
+/dist/
+/android/dist/
+/core/dist/
+/desktop/dist/
+/html/dist/
+/ios/dist/
 
-/game/nbdist/
-/game/android/nbdist/
-/game/core/nbdist/
-/game/desktop/nbdist/
-/game/html/nbdist/
-/game/ios/nbdist/
+/nbdist/
+/android/nbdist/
+/core/nbdist/
+/desktop/nbdist/
+/html/nbdist/
+/ios/nbdist/
 
-game/nbactions.xml
-game/nb-configuration.xml
+nbactions.xml
+nb-configuration.xml
 
 ## Gradle
 
-/game/local.properties
-/game/.gradle/
-/game/gradle-app.setting
+/local.properties
+/.gradle/
+/gradle-app.setting
 
 ## OS Specific
 .DS_Store
