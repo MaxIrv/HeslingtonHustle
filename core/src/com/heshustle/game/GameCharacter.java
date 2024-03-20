@@ -23,6 +23,7 @@ public class GameCharacter {
   private State currentState;
   private Direction currentDirection;
   private float stateTime;
+  public float characterHeight, characterWidth;
 
   public GameCharacter(String idleSheetPath, String runSheetPath, String characterName) {
     this.characterName = characterName;
@@ -83,8 +84,11 @@ public class GameCharacter {
     float originalHeight = currentFrame.getRegionHeight();
     float aspectRatio = originalWidth / originalHeight;
 
-//    float desiredHeight = 15; // Your desired height
     float scaledWidth = desiredHeight * aspectRatio;
+
+    this.characterWidth = scaledWidth;
+    // Dividing by 2 to give more allowance on collisions with height
+    this.characterHeight = desiredHeight / 2;
 
 
     // Draw the current frame at the character's position

@@ -5,10 +5,13 @@ import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
 /**
  *<p>Class that deals with:</p>
@@ -27,6 +30,13 @@ public class Map {
   private TiledMapTileLayer foreground, background, waterLayer;
   private MapLayer collidablePolygons, triggers;
 
+  // Map dimensions
+  public final int mapWidth, mapHeight;
+  public final float mapPixelWidth, mapPixelHeight;
+  public final Array<Rectangle> collidableTiles = new Array<>();
+  public final Array<Rectangle> waterTiles = new Array<>();
+  public final Array<Rectangle> collidableWaterTiles = new Array<>();
+
   /**
    * <p>Constructor for Map.</p>
    *
@@ -38,6 +48,14 @@ public class Map {
     map = new TmxMapLoader().load(filePath);
     mapRenderer = new OrthoCachedTiledMapRenderer (map);
     mapRenderer.setBlending(true);
+
+    int tileWidth = (int)map.getProperties().get("tilewidth");
+    int tileHeight = (int)map.getProperties().get("tileheight");
+    this.mapWidth = (int)map.getProperties().get("width");
+    this.mapHeight = (int)map.getProperties().get("height");
+
+    this.mapPixelWidth = mapWidth * tileWidth;
+    this.mapPixelHeight = mapHeight * tileHeight;
 
     foreground = (TiledMapTileLayer) map.getLayers().get("foreground");
     background = (TiledMapTileLayer) map.getLayers().get("background");
@@ -60,6 +78,48 @@ public class Map {
         }
       }
     }
+
+    // Get all 'blocked' tiles which should act as collisions
+    for (int y = 0; y < foreground.getHeight(); y++) {
+      for (int x = 0; x < foreground.getWidth(); x++) {
+        TiledMapTileLayer.Cell cell = foreground.getCell(x, y);
+        if (cell != null) {
+          TiledMapTile tile = cell.getTile();
+          if (tile != null && tile.getProperties().containsKey("blocked") && tile.getProperties()
+              .get("blocked", Boolean.class)) {
+            // This tile is collidable, add its rectangle to the list
+            Rectangle rect = new Rectangle(x * foreground.getTileWidth(),
+                y * foreground.getTileHeight(), foreground.getTileWidth(),
+                foreground.getTileHeight());
+            collidableTiles.add(rect);
+          }
+        }
+      }
+    }
+    // TODO: This is problematic as water tiles are often not the whole tile, so how we handle this becomes very awkward.
+    // Get all water tiles
+//    for (int y = 0; y < waterLayer.getHeight(); y++) {
+//      for (int x = 0; x < waterLayer.getWidth(); x++) {
+//        TiledMapTileLayer.Cell cell = waterLayer.getCell(x, y);
+//        if (cell != null) {
+//          Rectangle rect = new Rectangle(x * waterLayer.getTileWidth(), y * waterLayer.getTileHeight(), waterLayer.getTileWidth(), waterLayer.getTileHeight());
+//          waterTiles.add(rect);
+//        }
+//      }
+//    }
+//    // Populate tiles that are not covered by another layer (therefore collidiable)
+//    for (Rectangle waterTile : waterTiles) {
+//      boolean isCovered = false;
+//      // Check higher layers, assuming foregroundLayer is the next layer up
+//      TiledMapTileLayer.Cell cell = foreground.getCell((int)(waterTile.x / foreground.getTileWidth()), (int)(waterTile.y / foreground.getTileHeight()));
+//      if (cell != null) {
+//        isCovered = true;  // Found a tile in the foreground layer that covers this water tile
+//      }
+//
+//      if (!isCovered) {
+//        collidableTiles.add(waterTile);  // This water tile is not covered and should be considered for collisions
+//      }
+//    }
   }
 
   /**
