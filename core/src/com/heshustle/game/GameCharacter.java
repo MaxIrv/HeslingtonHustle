@@ -6,11 +6,32 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
+/**
+ * <p>Class that deals with all character functions, specifically:</p>
+ * <ul>
+ * <li>Keeping track of the character's position and the direction they're facing.</li>
+ * <li>Rendering and animating the character.</li>
+ * </ul>
+ * <p>Also implements helper enums and methods for these functions</p>
+ */
 public class GameCharacter {
+
+  /**
+   * Valid character states, consisting of:<br>
+   * {@link #IDLE}
+   * {@link #RUNNING}
+   */
   public enum State {
     IDLE, RUNNING
   }
 
+  /**
+   * Valid character directions, consisting of:<br>
+   * {@link #UP}
+   * {@link #DOWN}
+   * {@link #LEFT}
+   * {@link #RIGHT}
+   */
   public enum Direction {
     UP, DOWN, LEFT, RIGHT
   }
@@ -25,6 +46,13 @@ public class GameCharacter {
   private float stateTime;
   public float characterHeight, characterWidth;
 
+  /**
+   * <p>Constructor for GameCharacter.</p>
+   *
+   * @param idleSheetPath Relative file path from assets to the idle animation file sheet (.png)
+   * @param runSheetPath Relative file path from assets to the run animation file sheet (.png)
+   * @param characterName String that names the character. Used in character selection menu.
+   */
   public GameCharacter(String idleSheetPath, String runSheetPath, String characterName) {
     this.characterName = characterName;
     Texture idleSheet = new Texture(Gdx.files.internal(idleSheetPath));
@@ -57,6 +85,15 @@ public class GameCharacter {
   }
 
   // Helper method to extract animation frames
+
+  /**
+   * <p>Helper method to extract animation frames from a texture array</p>
+   *
+   * @param spriteSheetRow Texture array of animation frames.
+   * @param startFrame Index of starting pixel of the target animation frame.
+   * @param frameCount Number of frames in the animation.
+   * @return abaa
+   */
   private Animation<TextureRegion> extractAnimation(TextureRegion[] spriteSheetRow, int startFrame, int frameCount) {
     TextureRegion[] animationFrames = new TextureRegion[frameCount];
     for (int i = 0; i < frameCount; i++) {

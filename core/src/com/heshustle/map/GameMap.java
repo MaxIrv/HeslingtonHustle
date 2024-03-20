@@ -20,7 +20,7 @@ import com.heshustle.interaction.Interaction.Type;
  * <ul>
  * <li>Obtaining maps from tsx files.</li>
  * <li>Rendering them.</li>
- * <li>Checking for collision with both triggers and collidable objects.</li>
+ * <li>Checking  for collision with both triggers and collidable objects.</li>
  * </ul>
  */
 public class GameMap {
