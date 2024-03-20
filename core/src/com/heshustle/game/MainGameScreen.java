@@ -11,7 +11,7 @@ import com.heshustle.map.Map;
 
 
 public class MainGameScreen implements Screen {
-  public static final float SPEED = 60;
+  public static final float SPEED = 20;
   final HesHustleGame game;
   private final Map gameMap;
   private final GameCharacter character;
@@ -24,7 +24,8 @@ public class MainGameScreen implements Screen {
     // Initialize the game map using Gdx.files.internal passing in the path as a string
     gameMap = new Map(new OrthographicCamera(), Gdx.files.internal("HeslingtonEast.tmx").file().getAbsolutePath());
     this.character = character;
-    
+    this.characterX = gameMap.startPosition.x;
+    this.characterY = gameMap.startPosition.y;
   }
 
   @Override
@@ -82,7 +83,7 @@ public class MainGameScreen implements Screen {
     gameMap.render(Layer.foreground); // Render the foreground layer
 
     character.update(Gdx.graphics.getDeltaTime());
-    character.render(game.batch, characterX, characterY, 15);
+    character.render(game.batch, characterX, characterY, 10);
 
     if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
       // Option 1: Go back to the main menu or another screen

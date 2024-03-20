@@ -1,15 +1,14 @@
 package com.heshustle.map;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.maps.MapRenderer;
+import com.badlogic.gdx.maps.MapLayer;
+import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthoCachedTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
-import com.heshustle.map.Layer;
-import com.badlogic.gdx.Gdx;
 
 /**
  *<p>Class that deals with:</p>
@@ -23,6 +22,7 @@ public class Map {
   private OrthographicCamera camera;
   private final TiledMap map;
   private final OrthoCachedTiledMapRenderer mapRenderer;
+  public final Vector2 startPosition = new Vector2();
 
   private TiledMapTileLayer foreground, background, waterLayer;
   private MapLayer collidablePolygons, triggers;
@@ -45,6 +45,21 @@ public class Map {
 
     collidablePolygons = map.getLayers().get("collide");
     triggers = map.getLayers().get("trigger");
+
+    // Get Objective positions
+    MapLayer layer = map.getLayers().get("Objectives");
+    if (layer != null) {
+      for (MapObject object : layer.getObjects()) {
+        if ("Start".equals(object.getName())) {
+          if (object instanceof RectangleMapObject) {
+            RectangleMapObject rectObject = (RectangleMapObject) object;
+            startPosition.x = rectObject.getRectangle().x;
+            startPosition.y = rectObject.getRectangle().y;
+          }
+          break;
+        }
+      }
+    }
   }
 
   /**
