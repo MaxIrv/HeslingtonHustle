@@ -92,7 +92,8 @@ public class GameCharacter {
    * @param spriteSheetRow Texture array of animation frames.
    * @param startFrame Index of starting pixel of the target animation frame.
    * @param frameCount Number of frames in the animation.
-   * @return abaa
+   * @return New Animation<> that has a 0.1f frameDuration and contains the animation frames
+   * @see Animation
    */
   private Animation<TextureRegion> extractAnimation(TextureRegion[] spriteSheetRow, int startFrame, int frameCount) {
     TextureRegion[] animationFrames = new TextureRegion[frameCount];
@@ -102,6 +103,11 @@ public class GameCharacter {
     return new Animation<>(0.1f, animationFrames);
   }
 
+  /**
+   * <p>Updates the GameCharacter's sprite based on how much time has elapsed since the last update.
+   * </p>
+   * @param delta Amount of time in seconds that has passed since the last update.
+   */
   public void update(float delta) {
     stateTime += delta;
 
@@ -116,6 +122,15 @@ public class GameCharacter {
     }
   }
 
+  /**
+   * Renders the sprite via {@code batch}
+   *
+   * @param batch Batch to render the sprite to.
+   * @param x X coordinate of bottom left of the sprite.
+   * @param y Y coordinate of bottom left of the sprite.
+   * @param desiredHeight Desired height of the sprite in pixels. (Used for scaling)
+   * @see SpriteBatch
+   */
   public void render(SpriteBatch batch, float x, float y, float desiredHeight) {
     float originalWidth = currentFrame.getRegionWidth();
     float originalHeight = currentFrame.getRegionHeight();
@@ -152,10 +167,17 @@ public class GameCharacter {
     }
   }
 
+  /**
+   * Gets the current direction of the {@code GameCharacter}.
+   * @return The current direction of the {@code GameCharacter}.
+   */
   public Direction getCurrentDirection() {
     return currentDirection;
   }
 
+  /**
+   * Disposes unneeded assets. Call when the {@code GameCharacter} is no longer being used.
+   */
   public void dispose() {
     // Dispose textures when done
     // This should be called when the character is no longer needed

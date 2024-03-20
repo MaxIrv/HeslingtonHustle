@@ -14,7 +14,9 @@ import com.heshustle.interaction.Interaction;
 import com.heshustle.map.GameMap;
 import com.heshustle.map.Layer;
 
-
+/**
+ * Class that contains the main game logic and rendering.
+ */
 public class MainGameScreen implements Screen {
   private BitmapFont font;
   private float fontScale = 0.3f;
@@ -26,8 +28,15 @@ public class MainGameScreen implements Screen {
   // Character Position
   private float characterX, characterY;
 
+  /**
+   * Constructor for {@code MainGameScreen}.
+   *
+   * @param game Game to attach the Screen to.
+   * @param character Character to be rendered.
+   * @throws RuntimeException Thrown when assets can't be loaded correctly.
+   */
   public MainGameScreen (final HesHustleGame game, GameCharacter character)
-      throws ClassNotFoundException {
+      throws RuntimeException {
     this.game = game;
     this.font = new BitmapFont();
     this.font.getData().setScale(fontScale);
