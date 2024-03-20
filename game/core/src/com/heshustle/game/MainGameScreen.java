@@ -3,25 +3,20 @@ package core.src.com.heshustle.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
-import com.heshustle.game.map.Map;
-import com.heshustle.game.map.Layer;
+import com.heshustle.map.Layer;
+import com.heshustle.map.Map;
 
 
 public class MainGameScreen implements Screen {
-  public static final float SPEED = 120;
-  private SpriteBatch batch;
+  public static final float SPEED = 60;
   final HesHustleGame game;
-
-  private Map gameMap;
-
-  private GameCharacter character;
-
+  private final Map gameMap;
+  private final GameCharacter character;
   float characterX;
   float characterY;
 
@@ -36,7 +31,7 @@ public class MainGameScreen implements Screen {
 
   @Override
   public void show() {
-    img = new Texture(Gdx.files.internal("badlogic.jpg"));
+//    img = new Texture(Gdx.files.internal("badlogic.jpg"));
   }
 
   @Override
@@ -84,11 +79,12 @@ public class MainGameScreen implements Screen {
     Gdx.gl.glClearColor(1, 0, 0, 1);
     Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     game.batch.begin();
+    gameMap.render(Layer.waterLayer);
     gameMap.render(Layer.background); // Render the background layer
     gameMap.render(Layer.foreground); // Render the foreground layer
 
     character.update(Gdx.graphics.getDeltaTime());
-    character.render(game.batch, characterX, characterY);
+    character.render(game.batch, characterX, characterY, 15);
 
     if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
       // Option 1: Go back to the main menu or another screen
@@ -99,13 +95,6 @@ public class MainGameScreen implements Screen {
     }
 
     game.batch.end();
-  }
-
-  private void handleInput(float delta) {
-    if (Gdx.input.isKeyPressed(Keys.UP)) y += SPEED * delta;
-    if (Gdx.input.isKeyPressed(Keys.DOWN)) y -= SPEED * delta;
-    if (Gdx.input.isKeyPressed(Keys.LEFT)) x -= SPEED * delta;
-    if (Gdx.input.isKeyPressed(Keys.RIGHT)) x += SPEED * delta;
   }
 
   @Override
@@ -130,7 +119,6 @@ public class MainGameScreen implements Screen {
 
   @Override
   public void dispose() {
-    img.dispose();
 //    gameMap.dispose();
   }
 }

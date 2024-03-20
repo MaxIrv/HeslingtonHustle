@@ -79,10 +79,18 @@ public class GameCharacter {
     }
   }
 
-  public void render(SpriteBatch batch, float x, float y) {
+  public void render(SpriteBatch batch, float x, float y, float desiredHeight) {
+    float originalWidth = currentFrame.getRegionWidth();
+    float originalHeight = currentFrame.getRegionHeight();
+    float aspectRatio = originalWidth / originalHeight;
+
+//    float desiredHeight = 15; // Your desired height
+    float scaledWidth = desiredHeight * aspectRatio;
+
+
     // Draw the current frame at the character's position
     if (currentFrame != null) { // Add this null check
-      batch.draw(currentFrame, x, y);
+      batch.draw(currentFrame, x, y, scaledWidth, desiredHeight);
     } else {
       switch (currentState) {
         case IDLE:
@@ -92,7 +100,7 @@ public class GameCharacter {
           currentFrame = runAnimations[currentDirection.ordinal()].getKeyFrame(stateTime, true);
           break;
       }
-      batch.draw(currentFrame, x, y);
+      batch.draw(currentFrame, x, y, scaledWidth, desiredHeight);
     }
   }
 

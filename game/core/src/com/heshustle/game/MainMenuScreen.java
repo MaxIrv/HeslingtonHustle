@@ -70,7 +70,7 @@ public class MainMenuScreen implements Screen {
     game.font.draw(game.batch, characters.get(selectedCharacterIndex).characterName, 695, 40);
 
     characters.get(selectedCharacterIndex).update(Gdx.graphics.getDeltaTime());
-    characters.get(selectedCharacterIndex).render(game.batch, 700, 55);
+    characters.get(selectedCharacterIndex).render(game.batch, 700, 55, 50);
 
 
     if (Gdx.input.isKeyPressed(Keys.ENTER ) ||
