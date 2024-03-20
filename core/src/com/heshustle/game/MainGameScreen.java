@@ -33,10 +33,10 @@ public class MainGameScreen implements Screen {
    *
    * @param game Game to attach the Screen to.
    * @param character Character to be rendered.
-   * @throws RuntimeException Thrown when assets can't be loaded correctly.
+   * @throws ClassNotFoundException Thrown when assets can't be loaded correctly.
    */
   public MainGameScreen (final HesHustleGame game, GameCharacter character)
-      throws RuntimeException {
+      throws ClassNotFoundException {
     this.game = game;
     this.font = new BitmapFont();
     this.font.getData().setScale(fontScale);
@@ -58,6 +58,11 @@ public class MainGameScreen implements Screen {
 //    img = new Texture(Gdx.files.internal("badlogic.jpg"));
   }
 
+  /**
+   * Renders everything.
+   *
+   * @param delta Time in seconds since the last render.
+   */
   @Override
   public void render(float delta) {
     int mapWidth = 30;
@@ -150,6 +155,12 @@ public class MainGameScreen implements Screen {
 
   }
 
+  /**
+   * Updates the player's position and checks for collision.
+   *
+   * @param deltaX Player's change in x coordinate.
+   * @param deltaY Player's change in y coordinate.
+   */
   public void updatePlayerPosition(float deltaX, float deltaY) {
     float newX = characterX + deltaX;
     float newY = characterY + deltaY;
@@ -185,6 +196,13 @@ public class MainGameScreen implements Screen {
     }
   }
 
+  /**
+   * Checks whether one rect is colliding with any others within an array of many.
+   *
+   * @param playerRect Single {@code Rectangle} that collision is being checked against.
+   * @param collidableTiles Array of {@code Rectangle}s that collision is being checked against.
+   * @return {@code true} if {@code playerRect} is colliding with any of {@code collidableTiles}.
+   */
   private boolean checkCollision(Rectangle playerRect, Array<Rectangle> collidableTiles) {
     for (Rectangle tileRect : collidableTiles) {
       if (playerRect.overlaps(tileRect)) {
