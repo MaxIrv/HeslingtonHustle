@@ -159,6 +159,11 @@ public class GameCharacter {
     }
   }
 
+  /**
+   * Sets the state and/or direction of the character.
+   * @param newState New state for the character to be in.
+   * @param newDirection New direction for the character to face.
+   */
   public void setState(State newState, Direction newDirection) {
     if(this.currentState != newState || this.currentDirection != newDirection) {
       this.currentState = newState;

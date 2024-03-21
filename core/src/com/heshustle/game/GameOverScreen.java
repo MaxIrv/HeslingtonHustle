@@ -6,6 +6,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+/**
+ * Class that implements {@link Screen} to create a game over screen based on certain stats.
+ */
 public class GameOverScreen implements Screen {
   final HesHustleGame game;
   OrthographicCamera camera;
@@ -14,6 +17,11 @@ public class GameOverScreen implements Screen {
   public String eatScore;
   public String recreationScore;
 
+  /**
+   * Constructor for GameOverScreen.
+   * @param game Game to attach this screen to.
+   * @param hud HUD to obtain stats from.
+   */
   public GameOverScreen(final HesHustleGame game, Hud hud) {
     this.game = game;
     this.hud = hud;
@@ -26,10 +34,20 @@ public class GameOverScreen implements Screen {
     this.recreationScore = "You relaxed " + Integer.toString(hud.getRecreationCount()) + " times";
 
   }
+
+  /**
+   * Not yet implemented.
+   * {@inheritDoc}
+   */
   @Override
   public void show() {
 
   }
+
+  /**
+   * Renders the {@link Screen} to the game.
+   * @param delta Time in seconds since the last frame, not currently used.
+   */
   @Override
   public void render(float delta) {
     ScreenUtils.clear(0,0,0,1);
@@ -48,27 +66,42 @@ public class GameOverScreen implements Screen {
     game.font.draw(game.batch,"Press Esc to exit",100,100);
     game.batch.end();
   }
-
+  /**
+   * Not yet implemented.
+   * {@inheritDoc}
+   */
   @Override
   public void resize(int i, int i1) {
 
   }
-
+  /**
+   * Not yet implemented.
+   * {@inheritDoc}
+   */
   @Override
   public void pause() {
 
   }
-
+  /**
+   * Not yet implemented.
+   * {@inheritDoc}
+   */
   @Override
   public void resume() {
 
   }
-
+  /**
+   * Not yet implemented.
+   * {@inheritDoc}
+   */
   @Override
   public void hide() {
 
   }
-
+  /**
+   * Not yet implemented.
+   * {@inheritDoc}
+   */
   @Override
   public void dispose() {
 

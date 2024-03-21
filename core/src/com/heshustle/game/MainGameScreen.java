@@ -33,6 +33,7 @@ public class MainGameScreen implements Screen {
    *
    * @param game Game to attach the Screen to.
    * @param character Character to be rendered.
+   * @param hud HUD to be attached to the screen.
    * @throws ClassNotFoundException Thrown when assets can't be loaded correctly.
    */
   public MainGameScreen (final HesHustleGame game, GameCharacter character, Hud hud)
@@ -54,13 +55,17 @@ public class MainGameScreen implements Screen {
     this.characterY = gameMap.startPosition.y;
   }
 
+  /**
+   * @deprecated No longer used.
+   * @see #render(float)
+   */
   @Override
   public void show() {
 //    img = new Texture(Gdx.files.internal("badlogic.jpg"));
   }
 
   /**
-   * Renders everything.
+   * Renders everything within the main game.
    *
    * @param delta Time in seconds since the last render.
    */
@@ -161,6 +166,10 @@ public class MainGameScreen implements Screen {
     hud.hudStage.draw();
   }
 
+  /**
+   * Not yet implemented, will be used to trigger mini-games/dialogue trees.
+   * @param nearbyInteraction Interaction that will be performed.
+   */
   public void performInteraction(Interaction nearbyInteraction) {
 
   }
@@ -222,26 +231,39 @@ public class MainGameScreen implements Screen {
     return false; // No collision detected
   }
 
+  /**
+   * Not implemented, {@link HesHustleGame} deals with resizing.
+   * @param i
+   * @param i1
+   */
   @Override
   public void resize(int i, int i1) {
 
   }
-
+  /**
+   * Not implemented.
+   */
   @Override
   public void pause() {
 
   }
-
+  /**
+   * Not implemented.
+   */
   @Override
   public void resume() {
 
   }
-
+  /**
+   * Not implemented.
+   */
   @Override
   public void hide() {
 
   }
-
+  /**
+   * Disposes unneeded assets. Call when the {@link MainGameScreen} is no longer being used.
+   */
   @Override
   public void dispose() {
 //    gameMap.dispose();

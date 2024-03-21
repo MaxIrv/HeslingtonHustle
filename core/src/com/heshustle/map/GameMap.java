@@ -20,7 +20,7 @@ import com.heshustle.interaction.Interaction.Type;
  * <ul>
  * <li>Obtaining maps from tsx files.</li>
  * <li>Rendering them.</li>
- * <li>Checking  for collision with both triggers and collidable objects.</li>
+ * <li>Checking  for collision with collidable tiles.</li>
  * </ul>
  */
 public class GameMap {
@@ -45,6 +45,7 @@ public class GameMap {
    *
    * @param camera Camera that the map's being rendered to.
    * @param filePath String that's the relative path (within assets) to the .tmx file.
+   * @throws ClassNotFoundException Thrown when the specified tsx contains unknown interactions.
    */
   public GameMap(OrthographicCamera camera, String filePath) throws ClassNotFoundException {
     this.camera = camera;
@@ -153,9 +154,9 @@ public class GameMap {
   }
 
   /**
-   * <p>Renders either the foreground or the background of the map.</p>
+   * <p>Renders map layers.</p>
    *
-   * @param layer Layer that gets rendered, either foreground or background.
+   * @param layer Layer that gets rendered.
    * @throws IllegalArgumentException Thrown when layer is not a valid layer.
    */
   public void render(Layer layer) throws IllegalArgumentException {
@@ -197,6 +198,10 @@ public class GameMap {
 
   }
 
+  /**
+   * Updates the camera used by the map's renderer.
+   * @param camera New camera.
+   */
   public void updateCamera(OrthographicCamera camera) {
     this.camera = camera;
     mapRenderer.setView(camera);

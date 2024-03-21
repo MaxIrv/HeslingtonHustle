@@ -10,6 +10,10 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import com.heshustle.game.GameCharacter.Direction;
 import com.heshustle.game.GameCharacter.State;
 
+/**
+ * Class that implements {@link Screen} to create a main menu screen. Has the additional
+ * functionality of working as a character select screen.
+ */
 public class MainMenuScreen implements Screen {
   final HesHustleGame game;
   OrthographicCamera camera;
@@ -17,6 +21,11 @@ public class MainMenuScreen implements Screen {
   private final Array<GameCharacter> characters = new Array<>();
   private int selectedCharacterIndex;
 
+  /**
+   * Constructor for MainMenuScreen.
+   * @param game Game to attach this screen to.
+   * @param hud HUD to render and store player's interaction stats.
+   */
   public MainMenuScreen(final HesHustleGame game, Hud hud) {
     this.game = game;
     this.hud = hud;
@@ -43,11 +52,22 @@ public class MainMenuScreen implements Screen {
     }
   }
 
+  /**
+   * Not yet implemented.
+   */
   @Override
   public void show() {
 
   }
 
+  /**
+   * Renders the main menu screen and deals with the logic for:
+   * <ul>
+   *   <li>Entering the main game.</li>
+   *   <li>Selecting a character.</li>
+   * </ul>
+   * @param delta Amount of time since the last render call in seconds (unused).
+   */
   @Override
   public void render(float delta) {
     ScreenUtils.clear(0,0,0,1);
@@ -86,35 +106,56 @@ public class MainMenuScreen implements Screen {
     game.batch.end();
   }
 
+  /**
+   * Selects the next character within the array of available character sprites.
+   */
   public void selectNextCharacter() {
     selectedCharacterIndex = (selectedCharacterIndex + 1) % characters.size;
   }
 
+  /**
+   * Selects the previous character within the array of available character sprites.
+   */
   public void selectPreviousCharacter() {
     selectedCharacterIndex--;
     if (selectedCharacterIndex < 0) selectedCharacterIndex = characters.size - 1;
   }
 
+  /**
+   * Not yet implemented.
+   */
   @Override
   public void resize(int i, int i1) {
 
   }
 
+  /**
+   * Not yet implemented.
+   */
   @Override
   public void pause() {
 
   }
 
+  /**
+   * Not yet implemented.
+   */
   @Override
   public void resume() {
 
   }
 
+  /**
+   * Not yet implemented.
+   */
   @Override
   public void hide() {
 
   }
 
+  /**
+   * Not yet implemented.
+   */
   @Override
   public void dispose() {
   }

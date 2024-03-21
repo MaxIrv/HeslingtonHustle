@@ -21,6 +21,10 @@ import java.io.FileNotFoundException;
 import java.math.BigInteger;
 import java.util.Scanner;
 
+/**
+ * Class that renders a HUD show the player's current stats. Also keeps track of the player's
+ * current stats.
+ */
 public class Hud {
   private final Viewport viewport;
   public Stage hudStage;
@@ -41,6 +45,10 @@ public class Hud {
   private int dayCount;
   private Label dayCountLabel;
 
+  /**
+   * Constructor for Hud.
+   * @param batch Batch to render the HUD to.
+   */
   public Hud(SpriteBatch batch) {
     viewport = new FitViewport(800,480,new OrthographicCamera());
     hudStage = new Stage(viewport, batch);
@@ -80,6 +88,11 @@ public class Hud {
 
     hudStage.addActor(table);
   }
+
+  /**
+   * Updates the stats and display based on the interaction passed.
+   * @param interaction Interaction to increase by one.
+   */
   public void update(Interaction interaction) {
     if(interaction.getType() == Type.STUDY) {
       studyCount++;
@@ -97,15 +110,31 @@ public class Hud {
 
   }
 
+  /**
+   * Gets the number of times the player has studied.
+   * @return The number of times the player has studied.
+   */
   public int getStudyCount() {
     return studyCount;
   }
+  /**
+   * Gets the number of times the player has eaten.
+   * @return The number of times the player has eaten.
+   */
   public int getEatCount() {
     return eatCount;
   }
+  /**
+   * Gets the number of times the player has recreated.
+   * @return The number of times the player has recreated.
+   */
   public int getRecreationCount() {
     return recreationCount;
   }
+  /**
+   * Gets the number of days that have elapsed since the start of the game (in game time).
+   * @return The number of days that have elapsed since the start of the game.
+   */
   public int getDayCount() {
     return dayCount;
   }

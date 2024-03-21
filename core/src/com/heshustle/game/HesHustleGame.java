@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 
 /**
  * Class that encapsulates basic application window functionality.
- * Used in {@code MainGameScreen} and {@code MainMenuScreen} to switch {@code Screen}s
+ * Used in children of {@link com.badlogic.gdx.Screen} to switch between them.
  *
  * @see MainGameScreen
  * @see MainMenuScreen
