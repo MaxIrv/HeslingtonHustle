@@ -1,5 +1,7 @@
 package com.heshustle.game;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -34,11 +36,16 @@ public class GameOverScreen implements Screen {
     camera.update();
     game.batch.setProjectionMatrix(camera.combined);
 
+    if(Gdx.input.isKeyPressed(Keys.ESCAPE)) {
+      Gdx.app.exit();
+    }
+
     game.batch.begin();
     game.font.draw(game.batch,"Game Over!",100,300);
     game.font.draw(game.batch,studyScore,100,250);
     game.font.draw(game.batch,eatScore,100,200);
     game.font.draw(game.batch,recreationScore,100,150);
+    game.font.draw(game.batch,"Press Esc to exit",100,100);
     game.batch.end();
   }
 
