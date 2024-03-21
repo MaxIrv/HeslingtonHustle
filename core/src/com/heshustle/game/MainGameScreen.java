@@ -96,6 +96,7 @@ public class MainGameScreen implements Screen {
     gameMap.render(Layer.waterLayer);
     gameMap.render(Layer.background); // Render the background layer
     gameMap.render(Layer.foreground); // Render the foreground layer
+    gameMap.render(Layer.buildings);
 
     character.update(Gdx.graphics.getDeltaTime());
     character.render(game.batch, characterX, characterY, 10);
