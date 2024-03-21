@@ -20,7 +20,7 @@ import com.heshustle.interaction.Interaction.Type;
  * <ul>
  * <li>Obtaining maps from tsx files.</li>
  * <li>Rendering them.</li>
- * <li>Checking for collision with both triggers and collidable objects.</li>
+ * <li>Checking  for collision with both triggers and collidable objects.</li>
  * </ul>
  */
 public class GameMap {
@@ -41,7 +41,7 @@ public class GameMap {
   public final Array<Interaction> interactions = new Array<>();
 
   /**
-   * <p>Constructor for Map.</p>
+   * <p>Constructor for {@code GameMap}.</p>
    *
    * @param camera Camera that the map's being rendered to.
    * @param filePath String that's the relative path (within assets) to the .tmx file.
