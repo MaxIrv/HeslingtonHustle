@@ -17,7 +17,7 @@ public class HesHustleGame extends Game { //Using Game instead of AppAdapter in 
 		camera.setToOrtho(false, 800, 480); // Or whatever your preferred viewport size is
 		batch = new SpriteBatch();
 		font = new BitmapFont();
-		this.setScreen(new MainMenuScreen(this));
+		this.setScreen(new MainMenuScreen(this, new Hud(batch)));
 	}
 
 	public void render () {

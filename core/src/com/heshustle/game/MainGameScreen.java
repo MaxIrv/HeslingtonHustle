@@ -22,13 +22,14 @@ public class MainGameScreen implements Screen {
   final HesHustleGame game;
   private final GameMap gameMap;
   private final GameCharacter character;
-
+  final Hud hud;
   // Character Position
   private float characterX, characterY;
 
-  public MainGameScreen (final HesHustleGame game, GameCharacter character)
+  public MainGameScreen (final HesHustleGame game, GameCharacter character, Hud hud)
       throws ClassNotFoundException {
     this.game = game;
+    this.hud = hud;
     this.font = new BitmapFont();
     this.font.getData().setScale(fontScale);
     this.font.setColor(Color.BLACK);
@@ -128,13 +129,14 @@ public class MainGameScreen implements Screen {
 
     if (Gdx.input.isKeyPressed(Keys.ESCAPE)) {
       // Option 1: Go back to the main menu or another screen
-      game.setScreen(new MainMenuScreen(game));
+      game.setScreen(new MainMenuScreen(game, hud));
 
       // Option 2: Exit the application
       // Gdx.app.exit();
     }
-
     game.batch.end();
+    game.batch.setProjectionMatrix(hud.hudStage.getCamera().combined);
+    hud.hudStage.draw();
   }
 
   public void performInteraction(Interaction nearbyInteraction) {

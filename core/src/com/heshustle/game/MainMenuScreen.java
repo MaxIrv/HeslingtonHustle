@@ -13,12 +13,13 @@ import com.heshustle.game.GameCharacter.State;
 public class MainMenuScreen implements Screen {
   final HesHustleGame game;
   OrthographicCamera camera;
-
+  final Hud hud;
   private final Array<GameCharacter> characters = new Array<>();
   private int selectedCharacterIndex;
 
-  public MainMenuScreen(final HesHustleGame game) {
+  public MainMenuScreen(final HesHustleGame game, Hud hud) {
     this.game = game;
+    this.hud = hud;
 
     camera = new OrthographicCamera();
     camera.setToOrtho(false, 800, 400);
@@ -68,7 +69,7 @@ public class MainMenuScreen implements Screen {
     if (Gdx.input.isKeyPressed(Keys.ENTER ) ||
       Gdx.input.isKeyPressed(Keys.SPACE)) {
       try {
-        game.setScreen(new MainGameScreen(game, characters.get(selectedCharacterIndex)));
+        game.setScreen(new MainGameScreen(game, characters.get(selectedCharacterIndex), hud));
       } catch (ClassNotFoundException e) {
         throw new RuntimeException(e);
       }
