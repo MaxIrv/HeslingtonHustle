@@ -124,6 +124,7 @@ public class MainGameScreen implements Screen {
     if (Gdx.input.isKeyJustPressed(Keys.E) && nearbyInteraction != null) {
       // Call the interaction logic
       performInteraction(nearbyInteraction);
+      hud.update(nearbyInteraction);
     }
 
 
