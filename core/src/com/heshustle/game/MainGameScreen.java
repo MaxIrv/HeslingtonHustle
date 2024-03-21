@@ -135,6 +135,12 @@ public class MainGameScreen implements Screen {
       // Option 2: Exit the application
       // Gdx.app.exit();
     }
+
+    if (hud.getDayCount() >= 7) {
+        game.setScreen(new GameOverScreen(game, hud));
+        //dispose();
+      }
+
     game.batch.end();
     game.batch.setProjectionMatrix(hud.hudStage.getCamera().combined);
     hud.hudStage.draw();

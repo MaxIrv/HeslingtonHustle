@@ -81,7 +81,6 @@ public class Hud {
     hudStage.addActor(table);
   }
   public void update(Interaction interaction) {
-    LabelStyle ls = new LabelStyle(new BitmapFont(), Color.BLACK);
     if(interaction.getType() == Type.STUDY) {
       studyCount++;
       studyCountLabel.setText(studyCount);
@@ -96,5 +95,18 @@ public class Hud {
       dayCountLabel.setText(dayCount);
     }
 
+  }
+
+  public int getStudyCount() {
+    return studyCount;
+  }
+  public int getEatCount() {
+    return eatCount;
+  }
+  public int getRecreationCount() {
+    return recreationCount;
+  }
+  public int getDayCount() {
+    return dayCount;
   }
 }
