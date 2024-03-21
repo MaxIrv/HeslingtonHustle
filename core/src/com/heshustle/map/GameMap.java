@@ -29,7 +29,7 @@ public class GameMap {
   private final OrthoCachedTiledMapRenderer mapRenderer;
   public final Vector2 startPosition = new Vector2();
 
-  private TiledMapTileLayer foreground, background, waterLayer;
+  private TiledMapTileLayer foreground, background, waterLayer, buildings;
   private MapLayer collidablePolygons, triggers;
 
   // Map dimensions
@@ -63,6 +63,7 @@ public class GameMap {
     foreground = (TiledMapTileLayer) map.getLayers().get("foreground");
     background = (TiledMapTileLayer) map.getLayers().get("background");
     waterLayer = (TiledMapTileLayer) map.getLayers().get("waterLayer");
+    buildings = (TiledMapTileLayer) map.getLayers().get("buildings");
 
     collidablePolygons = map.getLayers().get("collide");
     triggers = map.getLayers().get("trigger");
@@ -109,17 +110,17 @@ public class GameMap {
     }
 
     // Get all 'blocked' tiles which should act as collisions
-    for (int y = 0; y < foreground.getHeight(); y++) {
-      for (int x = 0; x < foreground.getWidth(); x++) {
-        TiledMapTileLayer.Cell cell = foreground.getCell(x, y);
+    for (int y = 0; y < buildings.getHeight(); y++) {
+      for (int x = 0; x < buildings.getWidth(); x++) {
+        TiledMapTileLayer.Cell cell = buildings.getCell(x, y);
         if (cell != null) {
           TiledMapTile tile = cell.getTile();
           if (tile != null && tile.getProperties().containsKey("blocked") && tile.getProperties()
               .get("blocked", Boolean.class)) {
             // This tile is collidable, add its rectangle to the list
-            Rectangle rect = new Rectangle(x * foreground.getTileWidth(),
-                y * foreground.getTileHeight(), foreground.getTileWidth(),
-                foreground.getTileHeight());
+            Rectangle rect = new Rectangle(x * buildings.getTileWidth(),
+                y * buildings.getTileHeight(), buildings.getTileWidth(),
+                buildings.getTileHeight());
             collidableTiles.add(rect);
           }
         }
@@ -172,6 +173,10 @@ public class GameMap {
 
       case waterLayer:
         layerString = "waterLayer";
+        break;
+
+      case buildings:
+        layerString = "buildings";
         break;
 
       default:
