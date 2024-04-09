@@ -80,11 +80,11 @@ public class MainMenuScreen implements Screen {
     game.font.draw(game.batch, "Use the left and right arrow keys to cycle between characters!", 100, 30);
 
 //    characters.get(0).setState(State.IDLE, Direction.DOWN);
-    game.font.draw(game.batch, characters.get(selectedCharacterIndex).characterName, 695, 40);
-
-    characters.get(selectedCharacterIndex).update(Gdx.graphics.getDeltaTime());
-    characters.get(selectedCharacterIndex).render(game.batch, 700, 55, 50);
-
+    if(!characters.isEmpty()) {
+      game.font.draw(game.batch, characters.get(selectedCharacterIndex).characterName, 695, 40);
+      characters.get(selectedCharacterIndex).update(Gdx.graphics.getDeltaTime());
+      characters.get(selectedCharacterIndex).render(game.batch, 700, 55, 50);
+    }
 
     if (Gdx.input.isKeyPressed(Keys.ENTER ) ||
       Gdx.input.isKeyPressed(Keys.SPACE)) {
