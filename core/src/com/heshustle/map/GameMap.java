@@ -1,5 +1,6 @@
 package com.heshustle.map;
 
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
@@ -47,9 +48,9 @@ public class GameMap {
    * @param filePath String that's the relative path (within assets) to the .tmx file.
    * @throws ClassNotFoundException Thrown when the specified tsx contains unknown interactions.
    */
-  public GameMap(OrthographicCamera camera, String filePath) throws ClassNotFoundException {
+  public GameMap(OrthographicCamera camera, FileHandle mapFile) throws ClassNotFoundException {
     this.camera = camera;
-    map = new TmxMapLoader().load(filePath);
+    map = new TmxMapLoader().load(mapFile.path());
     mapRenderer = new OrthoCachedTiledMapRenderer (map);
     mapRenderer.setBlending(true);
 

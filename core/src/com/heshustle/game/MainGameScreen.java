@@ -46,7 +46,7 @@ public class MainGameScreen implements Screen {
     // Initialize the game map using Gdx.files.internal passing in the path as a string
     try {
       gameMap = new GameMap(new OrthographicCamera(),
-          Gdx.files.internal("HeslingtonEast.tmx").file().getAbsolutePath());
+          Gdx.files.internal("HeslingtonEast.tmx"));
     } catch (ClassNotFoundException e) {
       throw new RuntimeException("Failed to load game map");
     }
