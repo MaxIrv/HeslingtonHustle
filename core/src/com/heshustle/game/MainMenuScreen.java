@@ -3,7 +3,6 @@ package com.heshustle.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -34,21 +33,20 @@ public class MainMenuScreen implements Screen {
     camera.setToOrtho(false, 800, 400);
 
     selectedCharacterIndex = 0;
-    FileHandle dirHandle = Gdx.files.internal("characters");
 
-    for (FileHandle entry: dirHandle.list()) {
-      if (entry.isDirectory()) {
-        String name = entry.name();
-        String idlePath = "characters/" + name + "/idle.png";
-        String runPath = "characters/" + name + "/run.png";
+    String[] names = {"adam", "alex", "amelia", "bob"};
 
-        // Capitalize first letter of the character name
-        name = name.substring(0, 1).toUpperCase() + name.substring(1);
+    for (String name : names) {
 
-        GameCharacter character = new GameCharacter(idlePath, runPath, name);
-        character.setState(State.IDLE, Direction.DOWN);
-        characters.add(character);
-      }
+      String idlePath = "characters/" + name + "/idle.png";
+      String runPath = "characters/" + name + "/run.png";
+
+      // Capitalize first letter of the character name
+      name = name.substring(0, 1).toUpperCase() + name.substring(1);
+
+      GameCharacter character = new GameCharacter(idlePath, runPath, name);
+      character.setState(State.IDLE, Direction.DOWN);
+      characters.add(character);
     }
   }
 
